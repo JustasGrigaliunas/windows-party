@@ -15,7 +15,7 @@ using WindowsParty.Services;
 
 namespace WindowsParty.ViewModels
 {
-    public class LoginViewModel: Conductor<object>
+    public class LoginViewModel : Conductor<object>
     {
         private string _username;
         private string _password;
@@ -50,14 +50,14 @@ namespace WindowsParty.ViewModels
         }
         public async void LogIn()
         {
-            var successfull= await _apiService.LogIn(Username,Password);
+            var successfull = await _apiService.LogIn(Username, Password);
             if (successfull)
             {
                 var serverListJson = await _apiService.GetServerList();
 
                 OpenServerList(serverListJson);
             }
-            
+
         }
         public void OpenServerList(string serverListJson)
         {

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using WindowsParty.Global;
+using WindowsParty.Models;
 
 namespace WindowsParty.Services
 {
@@ -23,6 +24,7 @@ namespace WindowsParty.Services
         public APIService() 
         {
             _httpClient = new HttpClient ();
+            _httpClient.DefaultRequestHeaders.Clear();
         }
         public async Task<bool> LogIn(string username, string password)
         {
@@ -33,20 +35,24 @@ namespace WindowsParty.Services
                     username = username,
                     password = password,
                 });
+
                 var content = new StringContent(jsonLogin.ToString(), Encoding.UTF8, "application/json");
 
-                var response = await _httpClient.PostAsync(ApiPaths.LoginPath, content);
-
-                var strContent = response.Content.ReadAsStringAsync().Result;
-                JObject responseJson = JObject.Parse(strContent);
-                if (!String.IsNullOrWhiteSpace((string)responseJson["message"]))
+                using (HttpResponseMessage response = await _httpClient.PostAsync(ApiPaths.LoginPath, content))
                 {
-                    MessageBox.Show((string)responseJson["message"], "Warning");
-                    return false;
+                    if (response.IsSuccessStatusCode)
+                    {
+                        JObject responseJson = JObject.Parse(response.Content.ReadAsStringAsync().Result);
+
+                        UserInfo.SetUserInfo(username, (string)responseJson["token"]);
+                        return true;
+                    }
+                    else
+                    {
+                        MessageBox.Show(response.ReasonPhrase);
+                        return false;
+                    }
                 }
-                else
-                    UserInfo.SetUserInfo(username, (string)responseJson["token"]);
-                return true;
             }
             catch (Exception ex)
             {
@@ -58,23 +64,22 @@ namespace WindowsParty.Services
         {
             try
             {
-                HttpClient httpClient = new HttpClient();
-                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", UserInfo.Token);
+                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", UserInfo.Token);
 
-                var response =  await httpClient.GetAsync(ApiPaths.ServerListPath);
-
-                var strContent = response.Content.ReadAsStringAsync().Result;
-                if(response.StatusCode != System.Net.HttpStatusCode.OK)
+                using(HttpResponseMessage response = await _httpClient.GetAsync(ApiPaths.ServerListPath))
                 {
-                    JObject responseJson = JObject.Parse(strContent);
-
-                    if (!String.IsNullOrWhiteSpace((string)responseJson["message"]))
+                    if(response.IsSuccessStatusCode)
                     {
-                        MessageBox.Show((string)responseJson["message"], "Warning");
+                        var resonseResult = response.Content.ReadAsStringAsync().Result;
+
+                        return resonseResult;
+                    }
+                    else
+                    {
+                        MessageBox.Show(response.ReasonPhrase);
                         return "";
                     }
                 }
-                return strContent;
             }
             catch (Exception ex)
             {

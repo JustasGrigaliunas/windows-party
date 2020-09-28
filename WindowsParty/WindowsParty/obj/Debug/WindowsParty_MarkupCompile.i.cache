@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\User\Documents\git\windows-party\WindowsParty\WindowsParty\App.xaml
-3-454016035
+2-1605564160
 
-15-692574704
+14-1603434381
 123422848083
-MainWindow.xaml;Views\LoginView.xaml;Views\ServerListView.xaml;
+Views\LoginView.xaml;Views\ServerListView.xaml;
 
-True
+False
 

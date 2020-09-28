@@ -9,14 +9,12 @@ C:\Users\User\Documents\git\windows-party\WindowsParty\WindowsParty\bin\Debug\Ca
 C:\Users\User\Documents\git\windows-party\WindowsParty\WindowsParty\bin\Debug\Caliburn.Micro.Platform.xml
 C:\Users\User\Documents\git\windows-party\WindowsParty\WindowsParty\bin\Debug\Caliburn.Micro.Platform.Core.xml
 C:\Users\User\Documents\git\windows-party\WindowsParty\WindowsParty\obj\Debug\WindowsParty.csprojAssemblyReference.cache
-C:\Users\User\Documents\git\windows-party\WindowsParty\WindowsParty\obj\Debug\MainWindow.g.cs
 C:\Users\User\Documents\git\windows-party\WindowsParty\WindowsParty\obj\Debug\Views\LoginView.g.cs
 C:\Users\User\Documents\git\windows-party\WindowsParty\WindowsParty\obj\Debug\App.g.cs
 C:\Users\User\Documents\git\windows-party\WindowsParty\WindowsParty\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\User\Documents\git\windows-party\WindowsParty\WindowsParty\obj\Debug\WindowsParty_MarkupCompile.cache
 C:\Users\User\Documents\git\windows-party\WindowsParty\WindowsParty\obj\Debug\WindowsParty_MarkupCompile.lref
 C:\Users\User\Documents\git\windows-party\WindowsParty\WindowsParty\obj\Debug\App.baml
-C:\Users\User\Documents\git\windows-party\WindowsParty\WindowsParty\obj\Debug\MainWindow.baml
 C:\Users\User\Documents\git\windows-party\WindowsParty\WindowsParty\obj\Debug\Views\LoginView.baml
 C:\Users\User\Documents\git\windows-party\WindowsParty\WindowsParty\obj\Debug\WindowsParty.g.resources
 C:\Users\User\Documents\git\windows-party\WindowsParty\WindowsParty\obj\Debug\WindowsParty.Properties.Resources.resources
